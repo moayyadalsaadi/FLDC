@@ -1,0 +1,59 @@
+﻿@model Graduation_Project.Models.Applicant
+
+@{
+    ViewBag.Title = "Regester";
+}
+<div class="text-right">
+    <br />
+    <div class="bg-light">
+        <br />
+        <h2 class="text-center">اكمال البيانات</h2>
+        <hr />
+    </div>
+
+    @using (Html.BeginForm("Regester", "Course", FormMethod.Post, new { enctype = "multipart/form-data", autocomplete = "off" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ApplicantId)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Form, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="FormImg" required />
+                    @*@Html.EditorFor(model => model.Form, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.Form, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Payment, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="PaymentImg" required />
+                    @*@Html.EditorFor(model => model.Payment, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.Payment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="StatusImg" required />
+                    @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">                
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="حفظ" class="btn btn-primary" onclick="alert('تم الحفظ')"/>                    
+                </div>
+            </div>                                     
+        </div>
+                    }
+
+    <br />
+</div>

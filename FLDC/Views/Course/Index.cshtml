@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Graduation_Project.Models.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+<br />
+<div class="bg-light">
+    <br />
+    <h2 class="text-center">البرامج التدريبية المتاحة</h2>
+    <hr />
+</div>
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card" style="text-align: center;">
+                <div class="card-header bg-white">
+                    <h5 class="font-weight-bold">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <h5 class="">@Html.DisplayFor(modelItem => item.Description)</h5>
+                </div>
+                <div class="card-body">
+                    @*<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Description)</h6>*@
+                    <p class="card-text">من: @Html.DisplayFor(modelItem => item.DateStart)</p>
+                    <p class="card-text">الى: @Html.DisplayFor(modelItem => item.DateEnd)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.CourseDays)</p>
+                    @if (item.CourseType == 1)
+                    {
+                        <p class="card-text">بالمركز</p>
+                    } 
+                    @if (item.CourseType == 2)
+                    {
+                        <p class="card-text">تدريب عن بعد</p>
+                    }      
+                    @*calculate the available seat*@               
+                    @{ 
+                        int seatNumber = item.SeatNumber;
+                        int seatBooked = Convert.ToInt32(item.SeatBooked);
+                        int availableSeat = seatNumber - seatBooked;
+                    }                   
+                    <p class="card-text">المقاعد المتاحة: @availableSeat</p>
+                </div>
+                @if (availableSeat == 0)
+                {
+                    <div class="card-footer text-muted">
+                        @Html.ActionLink("اكتمل العدد", "Apply", new { id = item.CourseId }, new { @class = "btn btn-danger disabled" } )
+                    </div>
+                }
+                else
+                {
+                    <div class="card-footer text-muted">
+                        @Html.ActionLink("تقديم", "Apply", new { id = item.CourseId }, new { @class = "btn btn-primary" })
+                    </div>
+                }                
+            </div>
+            <br />
+        </div>
+    }
+</div>
+
+
+
+

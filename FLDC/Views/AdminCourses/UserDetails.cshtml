@@ -1,0 +1,68 @@
+﻿@model Graduation_Project.Models.Applicant
+
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>تفاصيل المقدم</h2>
+    <hr />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.College)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Form)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+        @*///////////////////////*@
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.College)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => Model.Degree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Email)
+            </td>
+            <td>
+                <a href="@Url.Content(@Model.Form)" target="_blank"> استمارة التسجيل</a>
+            </td>
+            <td>
+                <a href="@Url.Content(@Model.Payment)" target="_blank">ايصال الدفع</a>
+            </td>
+            <td>
+                <a href="@Url.Content(@Model.Status)" target="_blank">بيان الحالة</a>
+            </td>
+        </tr>
+
+
+    </table>
+    <p>
+        @Html.ActionLink("تأكيد", "AcceptUser", new { id = Model.ApplicantId }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("رفض", "RefuseUser", new { id = Model.ApplicantId }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("الرجوع الى قائمة المقدمين", "GetUser", new { id = Model.CourseId }, new { @class = "btn btn-outline-info" })
+    </p>
+</div>

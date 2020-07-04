@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Graduation_Project.Models.Applicant>
+
+@{
+    ViewBag.Title = "Search";
+}
+<br />
+<div class="text-right">
+    <div class="bg-light">
+        <br />
+        <h2 class="text-center">متابعة الطلب</h2>
+        <hr />
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <label><b>الاسم</b></label>
+                @Html.TextBox("Name", item.Name, new { @class = "form-control", @readonly = "true" })
+                <label><b>الرقم القومي</b></label>
+                @Html.TextBox("SSN", item.SSN, new { @class = "form-control", @readonly = "true" })
+                <label><b>البرنامج التدريبي</b></label>
+                @Html.TextBox("CourseName", item.Course.Name, new { @class = "form-control", @readonly = "true" })
+                <br />
+            </div>
+            <div class="col-md-6">
+                @{
+                    int seatNumber = item.Course.SeatNumber;
+                    int seatBooked = Convert.ToInt32(item.Course.SeatBooked);
+                    if (seatNumber == seatBooked)
+                    {
+                        <h3 style="color:red">اكتمل عدد المقدمين في هذا البرنامج</h3>
+                    }
+                    else
+                    {
+                        <div class="col-md-12">@Html.ActionLink("تأكيد", "Regester", new { id = item.ApplicantId }, new { @class = "btn btn-primary" })</div>
+                    }
+                }
+                @if (ViewBag.State == 1 || ViewBag.State == 2)
+                {
+                    <div class="col-md-12">@Html.ActionLink("تأجيل", "Delay", new { id = item.ApplicantId }, new { @class = "btn btn-warning" })</div>
+                }
+
+            </div>
+        </div>
+                    }
+
+</div>

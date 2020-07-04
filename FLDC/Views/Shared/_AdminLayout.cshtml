@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="~/E-Register/main.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <title>fldc</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("الادمن", "Index", "AdminHome", null, new { @class = "navbar-brand" })
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!--this is the ul that contains the links-->
+            <ul class="navbar-nav">
+                <!--البرامج التدريبية-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dropdown-menu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        البرامج التدريبية
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("البرامج المتاحة للحجز", "Index", "Admincourses", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("مصفوفة البرامج", "", "AdminProgramMatrix", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("الاستعلام عن متقدم", "GetUser", "AdminUserQuery", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <!--عن المركز-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dropdown-menu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        عن المركز
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("الرؤية/الرسالة/الأهداف", "Index", "AdminVission", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("الانجازات", "Index", "AdminAchievement", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("رؤساء سابقون", "Index", "AdminPrevPresident", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <!--الهيكل الإداري-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dropdown-menu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        الهيكل الاداري
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("مجلس الإدارة", "Index", "AdminManagerStaff", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("المدربون", "Index", "AdminTrainer", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("المشرفون", "Index", "AdminSupperVisor", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <!--التقارير-->
+                <li class="nav-item ">
+                    @Html.ActionLink("التقارير", "Index", "AdminReport", null, new { @class = "nav-link" })
+                </li>
+                <!--المركز-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dropdown-menu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        المركز
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("قرارات جامعية", "Index", "AdminUniDecision", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("قواعد المركز", "Index", "AdminCenterRule", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("لوائح المركز", "Index", "AdminCenterRegulations", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("أنشطة المركز", "Index", "AdminCenterActivities", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <!---->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="dropdown-menu" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        تحكم
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("صور المركز", "Index", "AdminCenterPhotoes", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("الاخبار", "Index", "AdminNews", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("كلمة رئيس الجامعة", "Index", "AdminPresidentWords", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("كلمة نائب الرئيس", "Index", "AdminVicePresidentWord", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("كلمة مدير المركز ", "Index", "AdminCenterManagerWord", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("الأسئلة الشائعة", "Index", "AdminFAQs", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    <!-- end Footer -->
+    <!-- Import Js file -->
+    <script src="~/E-Register/js/all.js"></script>
+    <script src="~/E-Register/js/bootstrap.min.js"></script>
+    <script src="~/E-Register/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="~/E-Register/js/jquery-3.4.1.min.js"></script>
+    <script src="~/E-Register/js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="~/E-Register/js/main.js"></script>
+    <!-- ------------ -->
+</body>
+</html>

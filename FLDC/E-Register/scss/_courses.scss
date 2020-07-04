@@ -1,0 +1,34 @@
+.row {
+    .card {
+        font-family: $primary-font;
+        text-align: right;
+        margin: 10px auto;
+        .course-number {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: #000;
+            border-radius: 50%;
+            //   font-size: 45px;
+        }
+        #course-number {
+            width: 100%;
+            text-align: center;
+            font-size: 40px;
+            font-family: cairo;
+            font-weight: bolder;
+            color: aliceblue;
+        }
+        .card-body {
+            .btn {
+                width: auto;
+                margin: 0 auto;
+            }
+            .card-data {
+                font-size: 14px;
+                color: rgb(107, 107, 107);
+            }
+        }
+    }
+}

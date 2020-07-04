@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterAchievement>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>القرارات الجامعية</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("جديد", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Label)
+            </th>                        
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Label)
+                </td>                
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.CenterAchievementId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.CenterAchievementId }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.CenterAchievementId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

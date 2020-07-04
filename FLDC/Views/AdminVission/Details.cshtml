@@ -1,0 +1,36 @@
+﻿@model Graduation_Project.Models.AboutCenter
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>التفاصيل</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>           
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.AboutCenterId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("الرجوع الى القائمة", "Index", null, new { @class = "btn btn-outline-info" })
+    </p>
+    <br />
+</div>

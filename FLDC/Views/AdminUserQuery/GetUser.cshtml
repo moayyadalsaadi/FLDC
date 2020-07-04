@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "GetUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="text-right">
+    <br />
+    <div class="bg-light">
+        <br />
+        <h2 class="text-center">استعلام عن متقدم</h2>
+        <hr />
+    </div>
+    @using (Html.BeginForm("FindUser", "AdminUserQuery", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.Label("الكود الخاص بالتسجيل", htmlAttributes: new { @class = "control-label font-weight-bold" })
+                @Html.TextBox("search", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <input class="btn btn-primary" type="submit" name="submit" value="بحث" />
+    }
+</div>
+

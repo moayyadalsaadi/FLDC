@@ -1,0 +1,35 @@
+﻿@model Graduation_Project.Models.CenterAchievement
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>التفاصيل</h2>
+    <hr />
+    <div> 
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Label)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Label)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>          
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.CenterAchievementId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("الرجوع الى القائمة", "Index", null, new { @class = "btn btn-outline-info" })
+    </p>
+</div>

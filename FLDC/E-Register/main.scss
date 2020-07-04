@@ -1,0 +1,17 @@
+// Import Css File 
+@import url(css/normalize.css);
+@import url(css/bootstrap.min.css);
+@import url(css/all.css);
+@import url(css/animate.css);
+@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+// Import Scss file 
+@import "scss/layout";
+@import "scss/variable";
+@import "scss/font";
+@import "scss/color";
+//import componant 
+@import "scss/contactTable";
+@import "scss/form";
+@import "scss/courses";
+//import admin style
+@import "scss/admin";

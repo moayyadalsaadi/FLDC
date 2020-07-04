@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>مصفوفة البرامج</h2>
+    <hr />
+    <h2><a href="~/ProgramPdfFiles/ProgramMatrix/1.pdf" target="_blank"> مصفوفة البرامج الحالية</a></h2>
+    @using (Html.BeginForm("Index", "AdminProgramMatrix", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <label class="control-label font-weight-bold"> اختر ملف اخر</label>
+        <br />
+        <input type="file" name="pdffile" required/>
+        <input type="submit" value="حفظ" class="btn btn-primary" />
+        <p>@ViewBag.Message</p>
+    }
+
+</div>
+

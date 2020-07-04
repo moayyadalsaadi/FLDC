@@ -1,0 +1,27 @@
+aside {
+    position: fixed;
+    height: 100%;
+    float: right;
+    font-family: $primary-font;
+    border: 0.75px solid gold;
+    // box-shadow: ;
+    .aside-nav {
+        text-decoration: none;
+        text-align: right;
+        // margin: 0 10px;
+         :hover {
+            background-color: gold;
+            border-radius: 5px;
+        }
+        .admin-nav-list {
+            height: 40px;
+            // margin: 0 10px;
+            a {
+                font-size: 18px;
+                display: block;
+                // margin: 0 10px;
+                padding: 10px;
+            }
+        }
+    }
+}

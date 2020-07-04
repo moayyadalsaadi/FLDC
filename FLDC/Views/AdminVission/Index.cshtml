@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Graduation_Project.Models.AboutCenter>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>الرؤية / الرسالة / الأهداف</h2>
+    <hr />
+    <br />
+    
+    <table class="table">
+        <tr>
+            <th>               
+                @Html.Label("العنوان")
+            </th>                    
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.code==1)
+                    {
+                        @Html.Label("الرؤية")
+                    }
+                    else if (item.code == 2)
+                    {
+                        @Html.Label("الرسالة")
+                    }
+                    else if (item.code == 3)
+                    {
+                        @Html.Label("الأهداف")
+                    }
+                </td>                              
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.AboutCenterId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.AboutCenterId })                    
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

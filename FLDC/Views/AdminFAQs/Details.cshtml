@@ -1,0 +1,37 @@
+﻿@model Graduation_Project.Models.FAQ
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="text-right">
+    <br />
+    <h2>التفاصيل</h2>
+    <hr />
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Question)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Question)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.FAQId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("الرجوع الى القائمة", "Index", null, new { @class = "btn btn-outline-info" })
+    </p>
+</div>

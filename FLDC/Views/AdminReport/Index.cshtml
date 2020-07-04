@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Graduation_Project.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>التقارير</h2>
+    <hr />
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatBooked)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatBooked)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEnd)
+                </td>
+                <td>
+                    @Html.ActionLink("المقدمين", "Applied", new { id = item.CourseId }, new { target = "_blank" }) |
+                    @Html.ActionLink("اكمل التقديم", "FinishApplication", new { id = item.CourseId }, new { target = "_blank" }) |
+                    @Html.ActionLink("تم قبولهم", "ConfirmApplication", new { id = item.CourseId }, new { target = "_blank" }) |
+                    @Html.ActionLink("أجل", "Delay", new { id = item.CourseId }, new { target = "_blank" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

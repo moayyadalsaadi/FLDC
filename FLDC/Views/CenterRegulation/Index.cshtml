@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterRule>
+
+@{
+    ViewBag.Title = "Regulations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-center">لوائح المركز</h2>
+    <br />
+    <ul class="list-group list-group-flush">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">@item.Text</li>
+        }        
+    </ul>
+</div>

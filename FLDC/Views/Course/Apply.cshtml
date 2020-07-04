@@ -1,0 +1,117 @@
+﻿@model Graduation_Project.Models.Applicant
+
+@{
+    ViewBag.Title = "Apply";
+}
+@{int courseid = Convert.ToInt32(@ViewBag.CourseId); }
+<div class="text-right">
+    <div class="title bg-light">
+        استمارة تسجيل حضور دورة
+        @ViewBag.CourseName
+        <hr />
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل الاسم" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SSN, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SSN, new { htmlAttributes = new { @class = "form-control", @required = "true", maxlength = "14", @placeholder = "ادخل الرقم القومي المكون من 14 رقم" } })
+                    @Html.ValidationMessageFor(model => model.SSN, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @required = "true", maxlength = "11", @placeholder = "ادخل رقم الهاتف المكون من 11 رقم" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل الايميل الخاص بك ونشط أغلب الوقت" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group right_dirction">
+                @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.University, new { htmlAttributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل اسم الجامعة" } })
+                    @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group right_dirction">
+                @Html.LabelFor(model => model.College, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.College, new { htmlattributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل اسم الكلية" } })
+                    @Html.ValidationMessageFor(model => model.College, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group right_dirction">
+                @Html.LabelFor(model => model.Section, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Section, new { htmlAttributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل اسم القسم" } })
+                    @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group right_dirction">
+                @Html.LabelFor(model => model.Degree, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control", @required = "true", @placeholder = "ادخل الدرجة الوظيفية " } })
+                    @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group right_dirction">
+                @Html.LabelFor(model => model.JobState, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobState, new { htmlAttributes = new { @class = "form-control", @placeholder = "ادخل الحالة الوظيفية   \"اعارة للخارج - اجازة بدون مرتب - اجازة بمرتب - على قوة العمل \"" } })
+                    @Html.ValidationMessageFor(model => model.JobState, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2 d-flex" })*@
+                <div class="col-md-10">
+                    <input type="hidden" name="CourseId" id="CourseId" value="@courseid" />
+                    @*@Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.Message");
+                    };
+                </script>
+            }
+            <div class="form-group mt-4">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="تسجيل" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+</div>

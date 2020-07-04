@@ -1,0 +1,106 @@
+﻿@model Graduation_Project.Models.Course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-danger">هل انت متأكد من حذف هذا البرنامج؟</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeatNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeatBooked)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeatBooked)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.AvailableSeat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvailableSeat)
+            </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateStart)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateEnd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDays)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDays)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseType)
+            </dt>
+
+            <dd>
+                @if (Model.CourseType == 1)
+                {
+                    <span>بالمركز</span>
+                }
+                @if (Model.CourseType == 2)
+                {
+                    <span>عن بعد</span>
+                }
+                @*@Html.DisplayFor(model => model.CourseType)*@
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="حذف" class="btn btn-danger" />
+                @Html.ActionLink("الرجوع الى البرامج", "Index", null, new { @class = "btn btn-outline-info" })                
+            </div>
+        }
+    </div>
+    <br />
+</div>

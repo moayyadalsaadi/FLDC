@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Graduation_Project.Models.ContactUs>
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-right">
+    <br />
+
+    <h2 class="border border-primary p-3 bg-light">للاتصال بنا</h2>
+    <br />
+    <div class="border p-4">
+        @foreach (var item in Model)
+        {
+            @*email*@
+            <h5>@Html.DisplayNameFor(model => model.Email)</h5>
+            <p class="text-muted"><span><i class="fas fa-envelope fa-2x text-danger"></i></span> @Html.DisplayFor(modelItem => item.Email)</p>
+            @*phone*@
+            <h5>@Html.DisplayNameFor(model => model.Phone)</h5>
+            <p class="text-muted"><span><i class="fas fa-phone fa-2x"></i></span> @Html.DisplayFor(modelItem => item.Phone)</p>
+            @*mobile*@
+            <h5>@Html.DisplayNameFor(model => model.Mobile)</h5>
+            <p class="text-muted"><span><i class="fas fa-mobile fa-2x text-info"></i></span> @Html.DisplayFor(modelItem => item.Mobile)</p>
+        }
+    </div>
+
+</div>
+<br />
+
+

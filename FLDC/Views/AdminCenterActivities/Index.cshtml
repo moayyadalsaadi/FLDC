@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterRule>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>أنشطة المركز</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("جديد", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.CenterRuleId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.CenterRuleId }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.CenterRuleId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

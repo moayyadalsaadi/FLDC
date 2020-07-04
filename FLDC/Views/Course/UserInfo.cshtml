@@ -1,0 +1,17 @@
+﻿@model Graduation_Project.Models.Applicant
+
+@{
+    ViewBag.Title = "UserInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-right">
+    <br />
+    <h2 class="text-success">تم التسجيل بنجاح يمكنك تنزيل استمارة التقديم الان</h2>
+    <br />
+
+    <p>
+        @Html.ActionLink("تنزيل الاستمارة", "GetUserPdf", new { id = Model.ApplicantId }, new { @class = "btn btn-success", target="_blank" })
+    </p>
+
+</div>

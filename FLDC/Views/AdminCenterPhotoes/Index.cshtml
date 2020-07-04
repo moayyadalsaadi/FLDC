@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterPhoto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>صور المركز</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("جديد", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>            
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>                
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.CenterPhotosId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.CenterPhotosId }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.CenterPhotosId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Graduation_Project.Models.FAQ>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>الاسئلة الشائعة</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("جديد", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answer)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.FAQId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.FAQId }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.FAQId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

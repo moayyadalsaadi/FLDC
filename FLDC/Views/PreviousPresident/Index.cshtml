@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterStaff>
+
+@{
+    ViewBag.Title = "Previous President";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start previous president section -->
+<div class="container">
+    <div class="title wow fadeInLeft"> مديرون السابقون</div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card manager-word wow fadeInUp col-lg-2 col-md-4 col-sm-12">
+                <img src="@Url.Content(item.Path)" class="card-img-top" alt="@item.Path">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.Name
+                    </h5>
+                </div>
+                    @Html.ActionLink("المزيد", "Details", new { id = item.CenterStaffId }, new { @class = "card-link" })                
+            </div>
+        }
+
+    </div>
+</div>
+
+<!-- End previous president section  -->

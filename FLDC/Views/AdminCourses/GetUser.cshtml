@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Graduation_Project.Models.Applicant>
+
+@{
+    ViewBag.Title = "GetUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: max-content;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+        }       
+</style>
+<div class="follow-demand">
+    <div class="text-right">
+        <br />
+        <h2>المقدمين في هذا البرنامج</h2>
+        <hr />
+        <br />
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.College)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        <label>الاوراق</label>
+                    </th>
+                    <th>تأكيد</th>
+                    <th>إلغاء</th>
+                    <th>التفاصيل</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.College)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        <a href="#popup1" class=""> استمارة التسجيل</a>
+
+                        <div id="popup1" class="overlay">
+                            <div class="popup">
+                                <a class="close" href="">&times;</a>
+                                <div class="content">
+                                    <a href="@Url.Content(item.Form) " _target=block><img src="@Url.Content(item.Form)" alt="img" width="360" height="360"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <a href="#popup2">ايصال الدفع</a>
+                        <div id="popup2" class="overlay">
+                            <div class="popup">
+                                <a class="close" href="">&times;</a>
+                                <div class="content">
+                                    <a href="@Url.Content(item.Payment) "><img src="@Url.Content(item.Payment)" alt="img" width="360" height="360"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <a href="#popup3" target="_blank">بيان الحالة</a>
+                        <div id="popup3" class="overlay">
+                            <div class="popup">
+                                <a class="close" href="">&times;</a>
+                                <div class="content">
+                                    <a href="@Url.Content(item.Status) "><img src="@Url.Content(item.Status)" alt="img" width="360" height="360"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.ActionLink("تأكيد", "AcceptUser", new { id = item.ApplicantId }, new { @class = "btn btn-primary", style = "width: max-content; margin: 0;" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("رفض", "RefuseUser", new { id = item.ApplicantId }, new { @class = "btn btn-danger", style = "width: max-content; margin: 0;" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("التفاصيل", "UserDetails", new { id = item.ApplicantId }, new { @class = "btn btn-outline-success", style = "width: max-content; margin: 0;" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>    
+
+
+</div>

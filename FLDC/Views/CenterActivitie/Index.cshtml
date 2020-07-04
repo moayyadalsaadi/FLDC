@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterRule>
+
+@{
+    ViewBag.Title = "Activities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-center">أنشطة المركز</h2>
+    <br />
+    <table class="table table-hover table-success">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int x = 1; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <text>@x</text>
+                        @{ x++;}
+
+                    </td>
+                    <td>
+                        @item.Text
+                    </td>
+
+                </tr>
+                            }
+        </tbody>
+    </table>
+
+</div>

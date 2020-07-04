@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterRule>
+
+@{
+    ViewBag.Title = "Rules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-center">قواعد المركز</h2>
+    <br />
+    <ul class="list-group">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @item.Text
+                <span class="badge badge-primary badge-pill"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+            </li>
+        }
+    </ul>
+</div>
+<br />

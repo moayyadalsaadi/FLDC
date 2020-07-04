@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>مصفوفة البرامج</h2>
+    <hr />
+    <a href="~/ProgramPdfFiles/ProgramMatrix.pdf" target="_blank">مصفوفة البرامج</a>
+    @using (Html.BeginForm("Create", "AdminProgramMatrix", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <label class="control-label"> اختر ملف اخر</label>
+        <br />
+        <input type="file" name="pdffile"/>
+        <input type="submit" value="حفظ" class="btn btn-primary"/>
+        @ViewBag.Message
+    }
+
+</div>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterStaff>
+
+@{
+    ViewBag.Title = "Trainers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start trainer section -->
+<div class="container">
+    <div class="title wow fadeInLeft"> المدربين</div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card manager-word wow fadeInUp col-sm-12 col-md-5 col-lg-5">
+                <img src="@Url.Content(item.Path)" class="card-img-top" alt="@Url.Content(item.Path)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.Name
+                    </h5>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<!-- End trainer section  -->

@@ -1,0 +1,198 @@
+﻿@model Graduation_Project.Models.Applicant
+
+@{
+    ViewBag.Title = "FindUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div class="text-right" style="font-size:26px">
+
+    <div>
+        <div class="bg-light">
+            <br />
+            <h2 class="text-center">استعلام عن متقدم</h2>
+            <hr />
+        </div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Course.Name)                
+            </dt>
+
+            <dd>                
+                @Html.DisplayFor(model => model.Course.Name)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.University)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.University)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.College)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.College)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Section)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Section)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Degree)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Degree)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.SSN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SSN)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.State)
+            </dt>
+
+            <dd>
+                @{
+                    try
+                    {
+                        if (Model.State == 1)
+                        {
+                            <span>تم اكمال البيانات ورفع الصور</span>
+                        }
+                        else if (Model.State == 2)
+                        {
+                            <span>تم الموافقة على الطلب</span>
+                        }
+                        else if (Model.State == 3)
+                        {
+                            <span>تم التأجيل على طلب الإلتحاق بالبرنامج</span>
+                        }
+                        else if (Model.State == 4)
+                        {
+                            <span>هناك خطأ في البيانات</span>
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                }                
+                @*@Html.DisplayFor(model => model.State)*@
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.JobState)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JobState)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Form)
+            </dt>
+
+            <dd>
+                @if (Model.State == 0)
+                {
+                    <span>لم ترفع الاستمارة بعد</span>
+                }
+                else
+                {
+                    <a href="@Url.Content(@Model.Form)" target="_blank"> صورة استمارة التسجيل</a>
+                }
+                @*@Html.DisplayFor(model => model.Form)*@
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Payment)
+            </dt>
+
+            <dd>
+                @if (Model.State == 0)
+                {
+                    <span>لم ترفع بعد</span>
+                }
+                else
+                {
+                    <a href="@Url.Content(@Model.Payment)" target="_blank">صورة ايصال الدفع</a>
+                }
+                @*@Html.DisplayFor(model => model.Payment)*@
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @if (Model.State == 0)
+                {
+                    <span>لم ترفع بعد</span>
+                }
+                else
+                {
+                    <a href="@Url.Content(@Model.Status)" target="_blank">صورة بيان الحالة</a>
+                }
+                @*@Html.DisplayFor(model => model.Status)*@
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseStart)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseStart)
+            </dd>
+
+        </dl>
+    </div>    
+</div>

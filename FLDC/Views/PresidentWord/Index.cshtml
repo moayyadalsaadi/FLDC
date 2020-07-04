@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Graduation_Project.Models.PresidentWord>
+
+@{
+    ViewBag.Title = "President Word";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container  ">
+    <div class="title wow zoomInRight ">كلمة المدير </div>
+
+    <div class="row ">
+        @foreach (var item in Model)
+        {
+            if (item.Code == 1)
+            {
+                <!--this is كلمة رئيس الجامعة-->
+                <div class="card manager-word  col-lg-12 col-md-12 col-sm-12 wow fadeInDown  ">
+                    <img src="@Url.Content(item.Path)" class="card-img-top " alt="@Url.Content(item.Path)">
+                    <div class="card-body ">
+                        <h5 class="card-title ">@item.Name</h5>
+                        <h5 class="card-title ">@item.Description</h5>
+                        <p class="card-text ">
+                            @item.Text
+                        </p>
+                    </div>
+                </div>
+            }
+            else if (item.Code == 2)
+            {
+                <!--this is كلمة نائب رئيس الجامعة-->
+                <div class="card manager-word  col-lg-12 col-md-12 col-sm-12 wow fadeInUp">
+                    <img src="@Url.Content(item.Path)" class="card-img-top " alt="@Url.Content(item.Path)">
+                    <div class="card-body ">
+                        <h5 class="card-title ">@item.Name</h5>
+                        <h5 class="card-title ">@item.Description</h5>
+
+                        <p class="card-text ">
+                            @item.Text
+                        </p>
+                    </div>
+                </div>
+            }
+            else if (item.Code == 3)
+            {
+                <!--this is كلمة  مدير المركز-->
+                <div class="card manager-word  col-lg-12 col-md-12 col-sm-12 wow fadeInUp ">
+                    <img src="@Url.Content(item.Path)" class="card-img-top " alt="@Url.Content(item.Path)">
+                    <div class="card-body ">
+                        <h5 class="card-title ">@item.Name</h5>
+                        <h5 class="card-title ">@item.Description</h5>
+                        <p class="card-text ">
+                            @item.Text
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

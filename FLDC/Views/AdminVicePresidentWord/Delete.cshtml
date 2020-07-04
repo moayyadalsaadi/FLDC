@@ -1,0 +1,60 @@
+﻿@model Graduation_Project.Models.PresidentWord
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-danger">هل انت متأكد من حذف هذا النائب؟</h2>
+    <hr />
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Path)
+            </dt>
+
+            <dd>
+                <a href="@Url.Content(Model.Path)" target="_blank"><img src="@Url.Content(Model.Path)" alt="@Model.Path" style="width:200px" /></a>
+                @*@Html.DisplayFor(model => model.Path)*@
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="حذف" class="btn btn-danger" />
+                @Html.ActionLink("الرجوع الى القائمة", "Index", null, new { @class = "btn btn-outline-info" })
+            </div>
+        }
+    </div>
+    <br />
+</div>

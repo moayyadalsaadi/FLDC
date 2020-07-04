@@ -1,0 +1,43 @@
+﻿@model Graduation_Project.Models.FAQ
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2 class="text-danger">هل انت متأكد من حذف هذا السؤال؟</h2>
+    <hr />
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Question)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Question)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="حذف" class="btn btn-danger" />
+                @Html.ActionLink("الرجوع الى القائمة", "Index", null, new { @class = "btn btn-outline-info" })
+            </div>
+        }
+        <br />
+    </div>
+</div>

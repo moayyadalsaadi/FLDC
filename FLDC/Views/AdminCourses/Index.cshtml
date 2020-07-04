@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Graduation_Project.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="text-right">
+    <br />
+    <h2>البرامج التدريبية المتاحة للتقديم</h2>
+    <hr />
+    <br />
+
+    <p>
+        @Html.ActionLink("برنامج جديد", "Create", null, new { @class="btn btn-primary"})
+    </p>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatBooked)
+            </th>
+            @*<th>
+                <span>المقاعد المتاحة</span>
+                @Html.DisplayNameFor(model => model.AvailableSeat)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseType)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatBooked)
+                </td>
+                @*<td>
+                    @{
+                        int seatNumber = item.SeatNumber;
+                        int seatBooked = Convert.ToInt32(item.SeatBooked);
+                        int availableSeat = seatNumber - seatBooked;
+                    }
+                    <span>@availableSeat</span>
+                    @Html.DisplayFor(modelItem => item.AvailableSeat)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEnd)
+                </td>
+                <td>
+                    @if (item.CourseType==1)
+                    {
+                        <span>بالمركز</span>
+                    }
+                    @if (item.CourseType == 2)
+                    {
+                        <span>عن بعد</span>
+                    }
+                    @*@Html.DisplayFor(modelItem => item.CourseType)*@
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.CourseId }) |
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.CourseId }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.CourseId }) |
+                    @Html.ActionLink("المقدمين", "GetUser", new { id = item.CourseId }) |
+                    @if (item.ShowHide==0)
+                    {
+                        @Html.ActionLink("اظهار", "ShowCourse", new { id = item.CourseId })
+                    }
+                    else if(item.ShowHide == 1)
+                    {
+                         @Html.ActionLink("اخفاء", "HideCourse", new { id = item.CourseId })
+                    }                    
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>

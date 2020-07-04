@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Graduation_Project.Models.CenterAchievement>
+
+@{
+    ViewBag.Title = "Achievements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- start achievement form  -->
+<div class="register-form ">
+    <div class="container">
+        <div class="row">
+            <div class="title wow jackInTheBox">
+                انجازات المركز
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="card  wow fadeInRight col-lg-12">
+                    <div class="card-header">
+                        @item.Label
+                    </div>
+                    <div class="card-body">
+                        <p>@item.Text</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--End achievement form -->

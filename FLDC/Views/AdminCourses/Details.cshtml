@@ -1,0 +1,107 @@
+﻿@model Graduation_Project.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="text-right">
+    <br />
+    <h2>تفاصيل البرنامج</h2>
+
+    <div>        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeatNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeatBooked)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeatBooked)
+            </dd>
+
+            <dt>
+                <span>المقاعد المتاحة</span>
+                @*@Html.DisplayNameFor(model => model.AvailableSeat)*@
+            </dt>
+
+            <dd>
+                @{ 
+                    int seatNumber = Model.SeatNumber;
+                    int seatBooked = Convert.ToInt32(Model.SeatBooked);
+                    int avaialabeSeat = seatNumber - seatBooked;
+                }
+                <sapn>@avaialabeSeat</sapn>
+                @*@Html.DisplayFor(model => model.AvailableSeat)*@
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateStart)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateEnd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDays)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDays)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseType)
+            </dt>
+
+            <dd>
+                @if (Model.CourseType==1)
+                {
+                    <span>بالمركز</span>
+                }
+                @if(Model.CourseType == 2)
+                {
+                    <span>عن بعد</span>
+                }
+                @*@Html.DisplayFor(model => model.CourseType)*@
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.CourseId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("الرجوع الى البرامج", "Index", null, new { @class = "btn btn-outline-info" })
+    </p>
+</div>
